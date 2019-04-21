@@ -2,11 +2,14 @@
 #define CELL_HPP
 
 //fill character for live cell
-enum {ALIVE = '#', DEAD = ' '};
+enum class State {ALIVE = '#', DEAD = ' '};
 
-class cell {
+class Cell {
 public:
-	//cell();
+	Cell(int row, int col);
+	State getState();
+	void makeAlive();
+	void makeDead();
 	//int getNeighborCount();
 	//int getRow();
 	//int getCol();
@@ -14,5 +17,7 @@ protected:
 private:
 	int cellRow;
 	int cellCol;
+	State status;
+	State nextStatus;
 };
 #endif // !CELL_HPP

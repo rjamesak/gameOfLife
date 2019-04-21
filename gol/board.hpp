@@ -1,7 +1,7 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
-//#include "cell.hpp"
+#include "cell.hpp"
 #include <vector>
 #include <iostream>
 
@@ -11,7 +11,11 @@ public:
 	const char DEAD = ' ';
 	enum class Fate{ KILL, CREATE };
 	Board(int totalRows, int totalCols);
+	~Board();
 	void drawBoard();
+	void seedCells(int totalCells);
+	bool genCell(int row, int col);
+	bool killCell(int row, int col);
 	//init(int totalRows, int totalCols, int liveCells);
 	//init(int totalRows, int totalCols);
 	//void createCell(int row, int col);
@@ -21,10 +25,10 @@ public:
 
 protected:
 private:
-	int rows = 0;
-	int cols = 0;
+	int boardRows = 0;
+	int boardCols = 0;
 	//std::vector<cell> **world;
-	std::vector<std::vector<char>> *gameBoard;
+	Cell ***gameBoard;
 
 };
 #endif //BOARD_HPP
