@@ -30,9 +30,15 @@ Board::~Board()
 
 void Board::drawBoard()
 {
-	std::cout << "drawing board\n";
+	std::cout << "drawing board\n ";
+
+	for (int i = 0; i < boardCols; i++) {
+		std::cout << i;
+	}
+	std::cout << std::endl;
 
 	for (int i = 0; i < boardRows; i++) {
+		std::cout << i;
 		for (int j = 0; j < boardCols; j++) {
 			std::cout << static_cast<char>(gameBoard[i][j]->getState());
 		}
@@ -70,4 +76,43 @@ bool Board::killCell(int row, int col)
 		return true;
 	}
 	return false;
+}
+
+//returns the number of ALIVE cells adjacent to row and column
+//passed in as parameters
+int Board::getNeighborCount(int row, int col)
+{
+	int neighbors = 0;
+	int rowAbove, rowBelow, nextCol, prevCol;
+
+	//bounds check adjacent row/cols
+	if (row - 1 < 0) {
+		rowAbove = boardRows - 1;
+	}
+	else { rowAbove = row - 1; }
+	rowBelow = (row + 1) % boardRows;
+	nextCol = (col + 1) % boardCols;
+	if (col - 1 < 0) {
+		prevCol = boardCols - 1;
+	}
+	else { prevCol = col - 1; }
+
+	if (gameBoard[rowAbove][prevCol]->getState() == State::ALIVE) //nw
+		neighbors++;
+	if (gameBoard[rowAbove][col]->getState() == State::ALIVE) //n
+		neighbors++;
+	if (gameBoard[rowAbove][nextCol]->getState() == State::ALIVE) //ne
+		neighbors++;
+	if (gameBoard[row][prevCol]->getState() == State::ALIVE) //w
+		neighbors++;
+	if (gameBoard[row][nextCol]->getState() == State::ALIVE) //e
+		neighbors++;
+	if (gameBoard[rowBelow][prevCol]->getState() == State::ALIVE) //sw
+		neighbors++;
+	if (gameBoard[rowBelow][col]->getState() == State::ALIVE) //s
+		neighbors++;
+	if (gameBoard[rowBelow][nextCol]->getState() == State::ALIVE) //se
+		neighbors++;
+
+	return neighbors;
 }

@@ -20,7 +20,7 @@ public:
 	//init(int totalRows, int totalCols);
 	//void createCell(int row, int col);
 	//void killCell(int row, int col);
-	//int getNeighborCount(int row, int col);
+	int getNeighborCount(int row, int col);
 	//Fate determineFateOfCell(int numNeighbors);
 
 protected:
