@@ -1,11 +1,17 @@
+//Author: Russell James
+//Date: 4/23/2019
+//Conway's game of life. Coding challenge/side project.
+//Note: No input validation. 
 // gol.cpp : Defines the entry point for the console application.
 //
 
 #include "board.hpp"
+#include <ctime>
 
 int main()
 {
 
+	srand(time(NULL));
 	std::cout << "How many rows? ";
 	int rowInput = 0;
 	std::cin >> rowInput;

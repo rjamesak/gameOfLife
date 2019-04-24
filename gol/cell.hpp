@@ -13,9 +13,6 @@ public:
 	void setNextStatus(State next);
 	State getStatus();
 	void makeNext();
-	//int getNeighborCount();
-	//int getRow();
-	//int getCol();
 protected:
 private:
 	int cellRow;

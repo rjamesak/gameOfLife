@@ -18,18 +18,11 @@ public:
 	bool killCell(int row, int col);
 	void checkNeighbors();
 	void applyNext();
-	//init(int totalRows, int totalCols, int liveCells);
-	//init(int totalRows, int totalCols);
-	//void createCell(int row, int col);
-	//void killCell(int row, int col);
 	int getNeighborCount(int row, int col);
-	//Fate determineFateOfCell(int numNeighbors);
-
 protected:
 private:
 	int boardRows = 0;
 	int boardCols = 0;
-	//std::vector<cell> **world;
 	Cell ***gameBoard;
 
 };

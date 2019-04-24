@@ -1,6 +1,8 @@
 #include "board.hpp"
 #include <cstdlib>
 
+//ctor. Inits 2d array of cell pointers and 
+//points each element to a new cell
 Board::Board(int totalRows, int totalCols)
 {
 	//init 2d array of pointers to cells
@@ -16,7 +18,7 @@ Board::Board(int totalRows, int totalCols)
 	boardCols = totalCols;
 }
 
-//deallocate memory
+//destructor to deallocate memory
 Board::~Board()
 {
 	for (int i = 0; i < boardRows; i++) {
@@ -28,6 +30,8 @@ Board::~Board()
 	delete [] gameBoard;
 }
 
+//draws the board. Drawing symbols based on the char assigned 
+//to State enum.
 void Board::drawBoard()
 {
 	//std::cout << "drawing board\n";
