@@ -16,6 +16,8 @@ public:
 	void seedCells(int totalCells);
 	bool genCell(int row, int col);
 	bool killCell(int row, int col);
+	void checkNeighbors();
+	void applyNext();
 	//init(int totalRows, int totalCols, int liveCells);
 	//init(int totalRows, int totalCols);
 	//void createCell(int row, int col);

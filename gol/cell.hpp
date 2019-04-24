@@ -10,6 +10,9 @@ public:
 	State getState();
 	void makeAlive();
 	void makeDead();
+	void setNextStatus(State next);
+	State getStatus();
+	void makeNext();
 	//int getNeighborCount();
 	//int getRow();
 	//int getCol();

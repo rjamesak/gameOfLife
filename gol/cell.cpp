@@ -22,3 +22,18 @@ void Cell::makeDead()
 {
 	status = State::DEAD;
 }
+
+void Cell::setNextStatus(State next)
+{
+	nextStatus = next;
+}
+
+State Cell::getStatus()
+{
+	return status;
+}
+
+void Cell::makeNext()
+{
+	status = nextStatus;
+}

@@ -30,15 +30,17 @@ Board::~Board()
 
 void Board::drawBoard()
 {
-	std::cout << "drawing board\n ";
+	std::cout << "drawing board\n";
 
+	/*
 	for (int i = 0; i < boardCols; i++) {
 		std::cout << i;
 	}
 	std::cout << std::endl;
+	*/
 
 	for (int i = 0; i < boardRows; i++) {
-		std::cout << i;
+		//std::cout << i;
 		for (int j = 0; j < boardCols; j++) {
 			std::cout << static_cast<char>(gameBoard[i][j]->getState());
 		}
@@ -46,6 +48,7 @@ void Board::drawBoard()
 	}
 }
 
+//generate random number of cells on board
 void Board::seedCells(int totalCells)
 {
 	int added = 0;
@@ -76,6 +79,39 @@ bool Board::killCell(int row, int col)
 		return true;
 	}
 	return false;
+}
+
+//iterate through board and set next status of all cells
+void Board::checkNeighbors()
+{
+	for (int i = 0; i < boardRows; i++) {
+		for (int j = 0; j < boardCols; j++) {
+			//get neighbor count and determine fate
+			if (getNeighborCount(i, j) < 2) {
+				gameBoard[i][j]->setNextStatus(State::DEAD);
+			}
+			else if (gameBoard[i][j]->getState() == State::ALIVE && 
+					getNeighborCount(i, j) < 4 && getNeighborCount(i, j) > 1) {
+				gameBoard[i][j]->setNextStatus(gameBoard[i][j]->getStatus());
+			}
+			else if (getNeighborCount(i, j) > 3){
+				gameBoard[i][j]->setNextStatus(State::DEAD);
+			}
+			else if (gameBoard[i][j]->getStatus() == State::DEAD && getNeighborCount(i, j) == 3) {
+				gameBoard[i][j]->setNextStatus(State::ALIVE);
+			}
+		}
+	}
+}
+
+//iterate through board and apply the next status to current status
+void Board::applyNext()
+{
+	for (int i = 0; i < boardRows; i++) {
+		for (int j = 0; j < boardCols; j++) {
+			gameBoard[i][j]->makeNext();
+		}
+	}
 }
 
 //returns the number of ALIVE cells adjacent to row and column
