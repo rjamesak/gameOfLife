@@ -28,7 +28,7 @@ int main()
 	gameBoard.applyNext();
 	gameBoard.drawBoard();
 	for (int i = 0; i < 500; i++) {
-		system("CLS");
+		if (system("CLS")) system("clear");
 		gameBoard.checkNeighbors();
 		gameBoard.applyNext();
 		gameBoard.drawBoard();

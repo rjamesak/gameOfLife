@@ -30,7 +30,7 @@ Board::~Board()
 
 void Board::drawBoard()
 {
-	std::cout << "drawing board\n";
+	//std::cout << "drawing board\n";
 
 	/*
 	for (int i = 0; i < boardCols; i++) {
