@@ -26,14 +26,16 @@ int main()
 		gameBoard.seedCells(startingCells);
 	}
 	else { std::cout << "\ntoo many cells\n"; }
+
+	//gameBoard.addQueenBeeGlider(0, 12); //bounding box 7x22
 	gameBoard.drawBoard();
-	std::cout << "neighbor count, cell 0, 0: " << gameBoard.getNeighborCount(0, 0) << std::endl;
+	//std::cout << "neighbor count, cell 0, 0: " << gameBoard.getNeighborCount(0, 0) << std::endl;
 	//checkNeighbors sets next status in cells based on neighbor count
 	gameBoard.checkNeighbors();
 	//apply next iterates through board and sets current status to next status
 	gameBoard.applyNext();
 	gameBoard.drawBoard();
-	for (int i = 0; i < 500; i++) {
+	for (int i = 0; i < 1000; i++) {
 		if (system("CLS")) system("clear");
 		gameBoard.checkNeighbors();
 		gameBoard.applyNext();

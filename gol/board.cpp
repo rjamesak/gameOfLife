@@ -156,3 +156,31 @@ int Board::getNeighborCount(int row, int col)
 
 	return neighbors;
 }
+
+void Board::addQueenBeeGlider(int row, int col)
+{
+	//no bounds checking here, so be sure there is enough room in the array
+	//shuttle
+	gameBoard[row][col]->makeAlive();
+	gameBoard[row + 1][col]->makeAlive();
+	gameBoard[row + 1][col + 2]->makeAlive();
+	gameBoard[row + 2][col + 1]->makeAlive();
+	gameBoard[row + 2][col + 3]->makeAlive();
+	gameBoard[row + 3][col + 1]->makeAlive();
+	gameBoard[row + 3][col + 4]->makeAlive();
+	gameBoard[row + 4][col + 1]->makeAlive();
+	gameBoard[row + 4][col + 3]->makeAlive();
+	gameBoard[row + 5][col]->makeAlive();
+	gameBoard[row + 5][col + 2]->makeAlive();
+	gameBoard[row + 6][col]->makeAlive();
+	//right box
+	gameBoard[row + 3][col + 8]->makeAlive();
+	gameBoard[row + 3][col + 9]->makeAlive();
+	gameBoard[row + 4][col + 8]->makeAlive();
+	gameBoard[row + 4][col + 9]->makeAlive();
+	//left box
+	gameBoard[row + 3][col - 11]->makeAlive();
+	gameBoard[row + 3][col - 12]->makeAlive();
+	gameBoard[row + 4][col - 11]->makeAlive();
+	gameBoard[row + 4][col - 12]->makeAlive();
+}

@@ -19,6 +19,7 @@ public:
 	void checkNeighbors();
 	void applyNext();
 	int getNeighborCount(int row, int col);
+	void addQueenBeeGlider(int row, int col);
 protected:
 private:
 	int boardRows = 0;
